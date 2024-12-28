@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
 
-const About = ({ aboutData }) => {
+const About = ({ aboutData , mission }) => {
     if (!aboutData) return <div>Данные о клубе временно недоступны</div>;
 
     const { history, team } = aboutData;

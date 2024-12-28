@@ -7,6 +7,7 @@ import Services from "./pages/Services/Services.jsx";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
 import config from "./config.json";
+import Calculate from "./pages/Calculate/Calculate.jsx";
 
 const App = () => {
 
@@ -27,8 +28,9 @@ const App = () => {
                                                    contact={config.contact}
                     />} />
                     <Route path="/services" element={<Services services={config.services} />}/>
-                    <Route path="/about" element={<About aboutData={config.about} />} />
+                    <Route path="/about" element={<About aboutData={config.about} mission={config.mission}/>} />
                     <Route path="/contact" element={<Contact contactData={config.contact} />} />
+                    <Route path="/calculate" element={<Calculate />} />
                 </Routes>
             </div>
             <Footer footerData={config.footer} />
