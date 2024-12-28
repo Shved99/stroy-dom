@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaUserCircle, FaSignInAlt, FaUserPlus } from "react-icons/fa"; // Иконки
-import { useUser } from "../../UserContext.jsx"; // Импортируем контекст пользователя
 import "./Navbar.css";
 
 const Navbar = ({ navigation }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user, logout } = useUser(); // Получаем данные пользователя и функцию выхода
 
-    // Фильтруем навигацию для неавторизованных пользователей
-    const filteredNavigation = user
-        ? navigation
-        : navigation.filter((link) => link.label !== "Профиль");
+
 
     return (
         <header className="header">
             <div className="container">
                 {/* Логотип */}
                 <div className="logo">
-                    <NavLink to="/">Лого</NavLink>
+                    <NavLink to="/">
+                        <img src='/assets/images/logo-home.png' alt="Logo" width='100px'/>
+                    </NavLink>
                 </div>
 
                 {/* Навигация */}
                 <nav className={`navbar ${menuOpen ? "open" : ""}`}>
-                    {filteredNavigation.map((link, index) => (
+                    {navigation.map((link, index) => (
                         <NavLink
                             key={index}
                             to={link.path}
@@ -39,7 +36,6 @@ const Navbar = ({ navigation }) => {
 
                 {/* Кнопки профиля */}
                 <div className="profile-buttons">
-                    {user ? (
                         <>
                             <NavLink
                                 to="/profile"
@@ -50,7 +46,6 @@ const Navbar = ({ navigation }) => {
                                 <span className="icon-text">Профиль</span>
                             </NavLink>
                             <button
-                                onClick={logout}
                                 className="profile-icon logout-button"
                                 title="Выйти"
                             >
@@ -58,7 +53,6 @@ const Navbar = ({ navigation }) => {
                                 <span className="icon-text">Выйти</span>
                             </button>
                         </>
-                    ) : (
                         <>
                             <NavLink
                                 to="/login"
@@ -77,7 +71,6 @@ const Navbar = ({ navigation }) => {
                                 <span className="icon-text">Регистрация</span>
                             </NavLink>
                         </>
-                    )}
                 </div>
 
                 {/* Бургер-меню */}
