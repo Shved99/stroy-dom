@@ -1,0 +1,118 @@
+@import './../../../public/assets/styles/variable.css';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-header);
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: var(--spacing-padding);
+    z-index: 1000;
+}
+
+.logo a {
+    font-size: var(--font-size-heading);
+    font-weight: bold;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    gap: var(--spacing-margin);
+}
+
+.nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-link-hover);
+}
+
+.profile-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+    padding-top: var(--spacing-margin);
+}
+
+.profile-icon:hover {
+    color: var(--color-link-hover);
+}
+
+.icon-text {
+    font-size: 10px;
+    margin-top: var(--spacing-margin);
+    color: var(--color-muted-text);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Показываем текст при наведении */
+.profile-icon:hover .icon-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing-margin);
+    cursor: pointer;
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: var(--spacing-border-radius);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--color-header);
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-padding) 0;
+    }
+
+    .navbar.open {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+}
